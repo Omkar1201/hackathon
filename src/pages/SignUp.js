@@ -1,8 +1,17 @@
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
-import { NavLink } from "react-router-dom";
+import { NavLink ,useNavigate} from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useForm } from "react-hook-form";
 const SignUp = () => {
+	const {handleSubmit} = useForm();
+	const navigate = useNavigate();
+
+	const sucuessData = () =>{
+		navigate("/")
+	}
+
+
 	const { isLogin, setIsLogin } = useContext(AppContext)
 	function LoginHandler() {
 		setIsLogin(false);
@@ -13,7 +22,7 @@ const SignUp = () => {
 				<Navbar />
 			</div>
 			<div class="container2">
-				<form action="">
+				<form onSubmit={handleSubmit(sucuessData)} action="">
 					<div class="title">Sign Up</div>
 					<div class="input-box underline">
 						<input type="text" placeholder="Enter Your Name" required />
