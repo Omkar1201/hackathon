@@ -2,6 +2,7 @@ import React, { useContext, useRef, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AppContext } from '../Context/AppContext';
 import { LuUpload } from "react-icons/lu";
+import Navbar from './Navbar';
 export default function SelectFile() {
 	const { isuploadClicked, setisuploadClicked,image, setImage} = useContext(AppContext);
 	const fileInputRef = useRef(null);
@@ -34,12 +35,15 @@ export default function SelectFile() {
 
 	return (
 
-		<div className='flex flex-col items-center gap-10 '>
-			<div className='text-center text-4xl '>
+		<div className='flex flex-col py-7 items-center gap-10 bg-gradient-custom min-h-screen'>
+			<div className="w-[100%] z-20">
+                <Navbar/>
+            </div>
+			<div className='text-center text-4xl  text-white font-semibold' >
 				Intelligent Crop Disease Prediction System
 			</div>
-			<div className='border rounded-2xl shadow-xl p-4 max-w-[40rem] w-[40rem] flex  m-auto'>
-				<div className={`border-2 flex bg-gray-200 rounded-2xl flex-col justify-around text-lg font-semibold items-center border-black min-h-[18rem] w-full ${isuploadClicked ?'border-none':'border-dashed'}`} onDragOver={handleDragOver} onDrop={handleDrop}>
+			<div className='  border-green-500 rounded-2xl shadow-2xl shadow-slate-950 p-6 max-w-[20rem] w-[40rem] flex  m-auto'>
+				<div className={` border-2 flex bg-opacity-50 bg-gray-200 rounded-2xl flex-col justify-around text-lg font-semibold items-center border-black min-h-[18rem] w-full ${isuploadClicked ?'border-none':'border-dashed'}`} onDragOver={handleDragOver} onDrop={handleDrop}>
 					{
 						!isuploadClicked ? (<div>
 							Drag and drop a file or
@@ -57,8 +61,8 @@ export default function SelectFile() {
 							accept='image/*'
 						/>
 						{!isuploadClicked ? (
-							<button
-								className={`border flex items-center gap-2 text-white cursor-pointer font-semibold text-xl bg-green-500 rounded-3xl px-6 py-4`}
+							<button 
+								className={` flex items-center gap-2 text-white cursor-pointer font-semibold text-xl bg-gradient-custom rounded-3xl px-6 py-4`}
 								onClick={handleButtonClick}
 							>
 								<LuUpload />
@@ -75,7 +79,7 @@ export default function SelectFile() {
 				{isuploadClicked ? (
 					<NavLink to='/diseaseInfo'>
 						<button
-							className={`border flex items-center gap-2 text-white cursor-pointer font-semibold text-xl bg-green-500 rounded-3xl px-6 py-4`}>
+							className={` bg-gradient-custom flex items-center gap-2 text-white cursor-pointer font-semibold text-xl rounded-3xl px-10 py-4`}>
 							{/* <LuUpload/> */}
 							Upload image
 						</button>

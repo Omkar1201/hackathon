@@ -1,0 +1,15 @@
+.animate-from-left {
+    position: relative;
+    /* Start position off the screen */
+    animation: slideFromLeft 1s ease forwards;
+}
+
+@keyframes slideFromLeft {
+    from{
+        width: 0;
+    }
+    to {
+        width:3rem;
+        /* End position at 0 */
+    }
+}
